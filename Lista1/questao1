@@ -1,0 +1,43 @@
+Antes de iniciar sua trilha pelos postos P1, P2 e P3, João recebe de Monalisa um código vital, um número inteiro de dois dígitos que vai influenciar a energia de cada caminho disponível. João parte sempre de P1 e quer chegar a P3. Há dois caminhos possíveis:
+
+• Caminho direto: P1 -> P3 (não passa por P2).
+
+• Caminho por P2: P1 -> P2 -> P3.
+
+A energia base de cada caminho é a soma dos valores de energia dos postos visitados (incluindo P1 e P3 em ambos os casos).
+
+O Código Vital
+Seja D o código vital (10 <= D <= 99). Extraia seus dois dígitos: d1 e d2. O código ajusta as energias base conforme a relação entre d1 e d2:
+
+• Se d1 > d2: o caminho direto recebe bônus de (d1 - d2) pontos.
+
+• Se d2 > d1: o caminho por P2 recebe bônus de (d2 - d1) pontos.
+
+• Se d1 = d2: ambos os caminhos recebem bônus de (d1 + d2) pontos.
+
+Escolha do Caminho
+João escolhe o caminho de maior energia após os ajustes. Em caso de empate, ele prefere passar pelo P2.
+
+Classificação Final
+Xupenio classifica o desempenho de João com base na energia do caminho escolhido:
+
+Energia final do caminho escolhido	Mensagem de saída
+Energia > 30	Xupenio aprova! Nível: ELITE.
+10 <= Energia <= 30	Boa caminhada! Nível: SÓLIDO.
+0 <= Energia <= 9	Passou por pouco. Nível: BÁSICO.
+Energia < 0	Xupenio reprova. Nível: CRÍTICO.
+Entrada
+Uma única linha contendo quatro inteiros:
+
+V1 V2 V3 D
+• V1, V2, V3: valores de energia dos postos P1, P2 e P3 (-50 <= Vi <= 50).
+
+• D: o código vital de Monalisa (10 <= D <= 99).
+
+Saída
+Uma única linha no formato:
+
+Caminho: direto. <classificação>
+ou
+
+Caminho: P2. <classificação>
