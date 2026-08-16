@@ -1,0 +1,27 @@
+Uma data é representada por três números naturais que definem o dia, mês e ano. O mês é um número entre 1 e 12, onde 1 é para Janeiro, 2 para Fevereiro e assim por diante. O dia precisa ser um número entre 1 e N, onde N pode ser 28, 29, 30 ou 31 a depender do mês e do ano, seguindo as regras do calendário gregoriano. Assim, por exemplo, se o mês é 2 (Fevereiro), o dia deve estar entre 1 e 29 quando o ano for bissexto, e entre 1 e 28 no caso contrário.
+
+Segundo a wikipédia:
+Chama-se ano bissexto o ano ao qual é acrescentado um dia extra, ficando ele com 366 dias, um dia a mais do que os anos normais de 365 dias, ocorrendo a cada quatro anos (exceto anos múltiplos de 100 que não são múltiplos de 400). Isto é feito com o objetivo de manter o calendário anual ajustado com a translação da Terra e com os eventos sazonais relacionados às estações do ano.
+
+Faça um programa em C que lê o dia, mês e ano de uma data e verifica se ela é válida.
+
+Obs.: O ano é um número entre 1900 e 2100, inclusive.
+
+Entrada
+Tres números inteiros, sendo o dia, mês e ano, respectivamente.
+
+Saída
+O programa deve imprimir:
+
+Para data válida
+Data valida
+
+Para data inválida
+Data invalida
+
+Exemplo de entrada
+Exemplo de saída
+18 5 1989
+Data valida
+29 2 2017
+Data invalida
