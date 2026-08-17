@@ -1,0 +1,35 @@
+Após uma noite particularmente calma na vida de Rebeka, ela acordou deitada num banco de rua do Recife Antigo sem o celular (roubado) e com apenas três reais para voltar para casa. Depois de andar sem rumo por aí, ela se deparou com três homens que estavam tentando dividir o prêmio de uma aposta com base em porcentagens pré-estabelecidas.
+
+Sabendo a quantidade total de dinheiro e as porcentagens a que cada pessoa tem direito, Rebeka se propõe a ajudá-los (e talvez também ganhar algo) com algumas condições:
+
+Como o prêmio foi em moedas de 1, caso as porcentagens resultem em números inteiros de dinheiro, Rebeka informa quanto cada um deles ganhou e, se sobrar alguma nota, fica com ela para si;
+Por outro lado, se os valores finais não forem inteiros, Rebeka concorda em adicionar seus três reais, um a um, à quantidade total de dinheiro - contanto que isso solucione a conta de vez e apenas se, nessa nova divisão, sobrar no mínimo uma nota a mais do que ela investiu.
+Com medo de estarem sendo enganados, os homens pedem que ela prove saber fazer contas. Então:
+
+Se Rebeka investir dois reais, ela receberá três letras do alfabeto e deverá dizer qual o resultado da soma delas, sendo que “a” vale 1, “b” vale dois, ..., e “z” vale 26;
+Com três reais investidos, os homens lhe dirão suas idades e, se pelo menos uma delas for divisível por três, Rebeka deverá retornar a soma final de parcelas do número 3 presente nas idades deles.
+Sabendo que Rebeka precisa de 7 reais para pegar um busão e voltar para casa, faça um programa em C que verifica se ela conseguiu o dinheiro suficiente.
+
+Obs: Assuma que as porcentagens não excedem 100%.
+
+Entrada
+Quatro inteiros, onde o primeiro é o total de dinheiro e os outros as porcentagens de divisão (”x”, “y” e “z”);
+Caso Rebeka invista 2 reais: leia três letras (char);
+Caso Rebeka invista 3 reais: leia três idades (int).
+Saída
+O programa deve imprimir:
+
+Caso tenha sido possível chegar a uma divisão, em que A, B e C são as quantidades respectivas às porcentagens x, y e z:
+Cada homem ficou com A, B e C reais, respectivamente.
+
+Se não tiver sido possível dividir o dinheiro:
+Nao foi dessa vez que Rebeka pode ajudar...
+
+Caso Rebeka:
+invista 2 reais, imprima o resultado da soma.
+invista 3 reais, imprima a quantidade de parcelas.
+Se ela conseguir o dinheiro:
+Ela conseguiu! Rebeka voltou para casa e apanhou da mae por sumir na noite passada!
+
+Senão:
+E parece que Rebeka vai ter que voltar andando...
