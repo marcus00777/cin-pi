@@ -1,2 +1,2 @@
 # cin-pi
-Quetões de Programação Imperativa
+Questões de Programação Imperativa
