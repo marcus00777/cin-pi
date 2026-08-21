@@ -1,0 +1,20 @@
+Com a oficialização da LAJE (Liga Acadêmica de Jogos Eletrônicos), os desenvolvedores da liga concebem ideias cada vez mais inusitadas.
+
+Uma delas é um jogo em ASCII (caracteres padrão de texto), que está precisando de um botão dinâmico com desenho de seta para cima. Sua tarefa é ajudar o desenvolvedor com um algoritmo que gere esse botão com tamanho dinâmico.
+Entrada
+
+Dada uma dimensão N, desenhe uma seta para cima (feita do caractere .) sobre um fundo preenchido (feito do caractere #).
+Saída
+
+A seta é desenhada dentro de um grid quadrado de N linhas por N colunas e é dividida em duas partes: Um triângulo e uma linha reta.
+
+O centro da seta, onde fica a linha e a ponta do triângulo, depende da dimensão N. Se N for ímpar, o centro fica exatamente no meio. Se N for par, o centro é deslocado uma casa para a esquerda.
+
+A ponta começa na primeira linha (apenas um ponto central) e se expande um ponto para a direita e um ponto para a esquerda a cada nova linha. Ela cresce até que a linha atual seja igual à posição do centro.
+
+A reta começa logo após o triângulo e vai até a última linha da dimensão, sempre alinhado ao centro e tendo exatamente 1 caractere de largura.
+Dicas
+
+Se N for par, o índice central é (N/2) - 1, se N for ímpar, o índice é (N/2).
+
+Utilize múltiplos laços de repetição para facilitar a questão.
