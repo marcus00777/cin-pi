@@ -1,0 +1,43 @@
+Filipinho estava nostálgico, então decidiu fazer uma nova versão de seu jogo preferido de infância: Pou. Mas, como ele está sem tempo para esse projeto, Filipinho pediu a sua ajuda para fazer um mini protótipo. Nele, o jogador poderá brincar com o Pou e alimentá-lo.
+
+De inicio, o Pou deve começar com 10 de energia. Cada brincadeira consome uma quantidade especifica de energia. O jogador pode alimentar o Pou para recuperar energia e o jogo acaba quando a energia atingir zero ou menos.
+
+Entrada
+Um char C que pode ser a para alimentar ou b para brincar e um int N que representa a energia, 1 <= N <= 4.
+
+Saída
+Se o jogador escolher alimentar o Pou, deverá ser impresso:
+
+Alimento X foi consumido.
+
+para 1 <= X <= N.
+
+E após ele ser alimentado, deve ser impresso:
+
+N de energia recuperado! Meu total agora é Y.
+
+No entanto, se a energia estiver maior ou igual a 10 e o jogador tentar alimentar o Pou, imprima:
+
+O Pou está muito gordinho... ele precisa brincar!
+
+Caso o jogador escolha brincar com o Pou, deverá ser impresso:
+
+Para N igual a 1:
+
+Queimei meus neurônios em Memory!
+
+Para N igual a 2:
+
+Novo recorde em Free Fall!
+
+Para N igual a 3:
+
+Cliff Jump é demais!
+
+Para N igual a 4:
+
+Sky Jump é o clássico!
+
+No fim, deve ser impresso:
+
+CONGRATURATION. THIS STORY IS HAPPY END. THANK YOU.

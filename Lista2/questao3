@@ -1,0 +1,25 @@
+Em uma estrada, os carros costumam trafegar com uma velocidade muito alta, então foi desenvolvido um sistema de fiscalização da velocidade. Os veículos são identificados e verificados em trechos diferentes, a fim de calcular se a velocidade máxima foi ultrapassada.
+
+Será fornecido o horário, em hora e minuto, e a posição, em km, que o carro passou no trecho. Seu programa deverá calcular o total arrecadado com as multas em um dia qualquer e quantos carros/motoristas receberam pontos na carteira neste dia.
+
+Os valores da multa, aplicados para cada infração, são:
+
+1° infração: R$ 100
+2° infração: R$ 200
+3° infração: R$ 300
+4° infração em diante: Só uma multa de R$ 1000 + 1 ponto na carteira
+Obs.: Para medir a velocidade de um carro, ele precisa ter passado por 2 pontos consecutivos, para que a fórmula da velocidade distância/intervalo_de _tempo funicone.
+
+Considere uma velocidade máxima de 100km/h.
+
+Entrada
+Um inteiro C que representa o número de carros em um dia e um inteiro P que diz em quantos pontos da estrada será verificada a passagem do carro.
+
+Em seguida, para cada carro, P linha(s) com 'hora' 'minuto' 'km'.
+
+Saída
+Arrecadacao Multas: T
+
+Carros com ponto na carteira: N
+
+Onde T é o valor total de multas e N é o número total de carros com ponto(s) na carteira.
