@@ -1,0 +1,72 @@
+Uma lanchonete decidiu criar uma promoção utilizando os números impressos nos cupons de seus clientes.
+
+Para descobrir se um cupom foi premiado, é necessário calcular uma pontuação a partir de seus algarismos. Como vários cupons são emitidos ao longo do dia, sua tarefa é criar um programa que faça essa verificação automaticamente.
+
+Para cada cupom, analise todos os seus algarismos e calcule sua pontuação da seguinte maneira:
+
+se o algarismo for par, ele acrescenta ao total o dobro de seu valor;
+se o algarismo for ímpar, ele acrescenta ao total o triplo de seu valor.
+O algarismo 0 é considerado par.
+
+Além da pontuação, também devem ser contadas as quantidades de algarismos pares e ímpares do cupom.
+
+Depois que todos os algarismos forem analisados:
+
+se houver mais algarismos pares do que ímpares, acrescente 5 pontos;
+se houver mais algarismos ímpares do que pares, acrescente 3 pontos;
+se as quantidades forem iguais, acrescente 1 ponto.
+Um cupom será classificado como:
+
+PREMIADO, caso sua pontuação final seja divisível por 10;
+COMUM, caso contrário.
+Depois de analisar todos os cupons, o programa também deverá informar o resultado geral:
+
+PROMOCAO, se houver mais cupons premiados;
+NORMAL, se houver mais cupons comuns;
+EMPATE, se as quantidades forem iguais.
+Exemplo de cálculo
+Considere o cupom 18.
+
+O algarismo 1 é ímpar:
+
+1 * 3 = 3
+O algarismo 8 é par:
+
+8 * 2 = 16
+Assim, antes do bônus:
+
+3 + 16 = 19
+Há um algarismo par e um ímpar, portanto as quantidades são iguais e deve ser acrescentado 1 ponto:
+
+19 + 1 = 20
+Como 20 é divisível por 10, o cupom é PREMIADO.
+
+Entrada
+A primeira linha contém um inteiro q, representando a quantidade de cupons.
+
+Cada uma das q linhas seguintes contém um inteiro X, representando o número de um cupom.
+
+q
+X1
+X2
+...
+Xq
+Restrições:
+
+1 <= q <= 100
+10 <= X <= 99999999
+Os números dos cupons não possuem zeros à esquerda.
+
+Saída
+Para cada cupom, imprima sua pontuação seguida de sua classificação:
+
+PONTUACAO PREMIADO
+ou
+
+PONTUACAO COMUM
+Ao final, imprima:
+
+Premiados: P
+Comuns: C
+Resultado: R
+onde P representa a quantidade de cupons premiados, C representa a quantidade de cupons comuns e R pode ser PROMOCAO, NORMAL ou EMPATE.

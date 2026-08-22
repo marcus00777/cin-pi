@@ -6,41 +6,47 @@ int main(){
 
     scanf("%d", &tamanho_grid);
 
+    int grid_c = tamanho_grid / 2;
+
     //Montando o grid
     for (int i = 0; i < tamanho_grid; i++)
     {
         for (int j = 0; j < tamanho_grid; j++)
         {
             //Se for impar
-            if (tamanho_grid % 2 != 0){
-                
-                //Preenchendo grid com #
-                if (j != (tamanho_grid/2)){
+            if(tamanho_grid % 2 != 0){
 
-                    printf("#");
-                }
-
-                if (j == (tamanho_grid /2)){
+                if (j >= grid_c - i && j <= grid_c + i && i <= grid_c){
 
                     printf(".");
+
+                }else{
+
+                    if (j == grid_c){
+                        printf(".");
+                    }else{
+                        printf("#");
+                    }
                 }
-                
             }
 
             //Se for par
-            if (tamanho_grid % 2 == 0){
-                
-                //Preenchendo grid com #
-                 if (j != (tamanho_grid/2) - 1){
+             else{
 
-                    printf("#");
-                }
-                
-                if (j == (tamanho_grid /2) - 1){
-                    
+                if (j >= (grid_c - 1) - i && j <= (grid_c - 1) + i && i < grid_c){
+
                     printf(".");
+
+                }else{
+
+                    if (j == grid_c - 1){
+                        printf(".");
+                    }else{
+                        printf("#");
+                    }
                 }
-            }     
+            }
+
         }
         printf("\n");
     }
