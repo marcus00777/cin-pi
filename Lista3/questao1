@@ -1,0 +1,51 @@
+Sistemas de comunicação frequentemente precisam transmitir informações de forma que não sejam facilmente compreendidas por quem intercepta os dados — esse processo é chamado de codificação (ou cifragem). Quem recebe a informação, por sua vez, precisa decodificar (decifrar) para recuperar o conteúdo original.
+
+Uma das formas mais simples de codificação é deslocar cada símbolo de uma sequência por uma quantidade fixa de posições — técnica conhecida como Cifra de César, originalmente usada com letras do alfabeto. Neste exercício, você vai implementar uma versão dessa cifra aplicada a sequências de dígitos numéricos (0 a 9), com a possibilidade de tanto codificar quanto decodificar, dependendo da escolha do usuário.
+O que o programa deve fazer
+Codificação
+
+Cada dígito do vetor deve ser somado ao deslocamento. Se a soma ultrapassar 9, o valor deve "dar a volta" e continuar a partir do 0 (por exemplo, com deslocamento = 3, o dígito 8 se torna 1, e o dígito 9 se torna 2). Dica Utilizar o operador %.
+Decodificação
+
+É o processo inverso, cada digito deve ter o deslocamento subtraído. Porém, muito cuidado, voce tem que adaptar a lógica utilizada na operação anterior, pois o operador % aplicado a números negativos não se comporta como um módulo matemático tradicional.
+Dígito verificador
+
+Após codificar ou decodificar, o programa deve calcular um valor de verificação, obtido somando todos os dígitos do vetor resultante e tomando o resto da divisão por 10. Esse valor serve, na prática, para conferir rapidamente se um código não foi corrompido durante uma transmissão.
+Nível de segurança
+
+A partir do dígito verificador calculado, o programa deve classificar o código segundo a tabela abaixo:
+Verificador	Classificação
+0 a 2	"Nível de segurança: BAIXO"
+3 a 6	"Nível de segurança: MÉDIO"
+7 a 9	"Nível de segurança: ALTO"
+Funções Obrigatórias
+
+Seu programa deve conter, obrigatóriamente, funções para:
+
+    Codificar
+    Decodificar
+    Calcular o Verificador
+
+Entrada
+
+O programa deve ler, nesta ordem:
+
+    inteiro n (1 ≤ n ≤ 50): a quantidade de dígitos do código.
+
+    n inteiros, cada um entre 0 e 9: os dígitos do código, que devem ser armazenados em um vetor de inteiros.
+
+    Um inteiro deslocamento (1 ≤ deslocamento ≤ 9): a quantidade de posições que cada dígito deve ser deslocado.
+
+    Um caractere modo, que indica a operação desejada:
+        'C'→ codificar o código informado;
+        'D' → decodificar o código informado.
+
+Saída
+
+Independentemente do modo escolhido, a saída deve seguir sempre a mesma estrutura, em três linhas:
+
+<Código codificado ou decodificado>: <dígitos separados por espaço>
+Verificador: <dígito verificador>
+Nível de segurança: <BAIXO, MÉDIO ou ALTO>
+
+Onde a primeira linha começa com "Código codificado: " (se modo == 'C') ou "Código decodificado: " (se modo == 'D').

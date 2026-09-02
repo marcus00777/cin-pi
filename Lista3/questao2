@@ -1,0 +1,16 @@
+Escreva um programa em C que leia um vetor de números inteiros e inverta, dentro do próprio vetor, cada "bloco" de números não nulos consecutivos, mantendo os zeros exatamente nas mesmas posições em que estavam (os zeros funcionam como separadores entre os blocos, de forma parecida com o espaço separando palavras em uma frase).
+
+Considere que:
+
+    Um bloco é uma sequência contígua de elementos diferentes de zero.
+    Pode haver mais de um zero seguido entre dois blocos; todos esses zeros devem permanecer nas mesmas posições depois da inversão.
+    O vetor pode começar ou terminar com zero(s).
+    O vetor tem no máximo 200 elementos.
+    A inversão de cada bloco deve ser feita dentro de uma função separada, chamada para cada bloco encontrado — não é permitido inverter o vetor inteiro de uma vez só, apenas os blocos individuais devem ser invertidos, um de cada vez.
+
+Entrada
+
+A primeira linha contém um inteiro n, a quantidade de elementos do vetor. A segunda linha contém os n elementos do vetor, separados por espaço.
+Saída
+
+Uma única linha com os n elementos do vetor já modificado, separados por um espaço, seguida de quebra de linha.
