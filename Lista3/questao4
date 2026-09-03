@@ -1,0 +1,118 @@
+"No reino de Maxin-Lern, três espécies de flores crescem entrelaçadas no meu canteiro, quase idênticas a olho nu. Catalogando amostras que já identifiquei, notei que basta medir caule, folha, raiz e broto pra reconhecer a espécie com confiança. Eu gostaria de automatizar esse processo, criando um círculo mágico que seja capaz de classificar automaticamente qualquer flor que fosse colocada nele. Porém, eu não entendo nada de magia, envio essa carta em busca de um mago pra traçar um círculo capaz de fazer esse reconhecimento por mim: um círculo que aprenda com as plantas que já registrei, e depois preveja a espécie de qualquer flor nova que eu trouxer do campo. Se você for o mago da capaz de realizar meu pedido, aqui vão minhas anotações..."
+
+Para sua sorte, essa carta veio a você, que está iniciando seus estudos nas artes de confecção de Circulos mágicos, você irá traçar, na prática, um círculo mágico que funciona como um classificador de Machine Learning simples, o classificador por centróide mais próximo. Ele "treina" calculando a média das características de cada espécie já identificada, e depois prevê a espécie de novas plantas comparando suas características às médias aprendidas.
+
+As quatro características medidas
+Cada entrada do caderno traz 4 características (em cm), sempre nesta ordem:
+
+#	Característica	O que é
+1	comprimento do caule	o talo que sustenta a planta
+2	largura da folha	a folha mais larga da planta
+3	comprimento da raiz	a raiz principal
+4	diâmetro do broto	o botão ainda fechado, no topo
+Depois das 4 características, as entradas já identificadas trazem também a espécie: 0 = Lunária, 1 = Ígnea, 2 = Bruma.
+
+Flores
+
+A questão foi inspirada no Iris Dataset, que é bastante utilizado como um Hello, World! para Machine Learning.
+
+Treino - cálculo de centróide
+O centróide de uma espécie é, para cada característica, a média dos valores dessa característica entre as plantas de treino daquela espécie:
+
+centroide_caule[e] = (caule_1 + caule_2 + ... + caule_N) / N
+
+O mesmo vale para folha, raiz e broto. Calcula-se uma média por característica, não uma média geral.
+
+Exemplo: se as plantas de treino de Lunária têm comprimento de raiz 1.4, 1.4 e 1.4, a média é (1.4 + 1.4 + 1.4) / 3 = 1.40, esse é o comprimento de raiz do centróide de Lunária. O mesmo se repete para as outras 3 características e as outras 2 espécies.
+
+Previsão: classificando uma planta nova
+Para prever a espécie de uma planta nova, calcula-se a distância dela até cada um dos 3 centróides, e ela é classificada como sendo da espécie do centróide mais próximo. Usa-se a distância ao quadrado (soma dos quadrados das diferenças):
+
+d² = (caule - centroide_caule)² + (folha - centroide_folha)² + (raiz - centroide_raiz)² + (broto - centroide_broto)²
+
+Exemplo: a Amostra 4 tem medidas (6.0, 2.2, 4.0, 1.0) e o centróide de Ígnea é (5.93, 2.57, 4.37, 1.37). A distância ao quadrado é:
+
+d² = (6.0-5.93)² + (2.2-2.57)² + (4.0-4.37)² + (1.0-1.37)² = 0.00 + 0.14 + 0.14 + 0.14 = 0.42
+
+Como essa é a menor distância entre os 3 centróides, a planta é classificada como Ígnea mesmo sendo Bruma de verdade.
+
+Acurácia
+Após classificar todas as plantas do teste, compara-se cada previsão com o rótulo real. A acurácia é a porcentagem de acertos:
+
+Acurácia = (acertos / n) * 100%
+
+Exemplo: com 5 plantas no teste e 4 previsões corretas (a Amostra 4 errou):
+
+(4 / 5) * 100% = 80.00%.
+
+Entrada
+Um inteiro T: número de plantas de treino, seguido de T linhas com 4 floats (características) + 1 int (espécie).
+Um inteiro N: número de plantas de teste, seguido de N linhas no mesmo formato (a espécie real vem na entrada só para conferir a acurácia da previsão).
+Saída
+Para cada planta de teste: Amostra <i>: <especie prevista>.
+Ao final: Acuracia: <valor>% (2 casas decimais).
+Exemplo de entrada
+9
+5.1 3.5 1.4 0.2 0
+4.9 3.0 1.4 0.2 0
+5.0 3.6 1.4 0.2 0
+6.0 2.7 4.2 1.3 1
+5.5 2.5 4.0 1.3 1
+6.3 2.5 4.9 1.5 1
+6.5 3.0 5.5 1.8 2
+6.9 3.1 5.4 2.1 2
+6.3 2.9 5.6 1.8 2
+5
+5.0 3.4 1.5 0.2 0
+5.9 3.0 4.2 1.5 1
+6.5 3.0 5.2 2.0 2
+6.0 2.2 4.0 1.0 2
+6.3 3.3 6.0 2.5 2
+Exemplo de saída
+Amostra 1: Lunaria
+Amostra 2: Ignea
+Amostra 3: Bruma
+Amostra 4: Ignea
+Amostra 5: Bruma
+Acuracia: 80.00%
+(A amostra 4 é Bruma de verdade, mas o modelo erra e prevê Ignea, por isso a acurácia não é 100%.)
+
+Funções obrigatórias
+As funções abaixo são obrigatórias de se ter no código, você pode criar funções além dessas, porém são opcionais. É aconselhável fazer funções auxiliares você mesmo invés de usar a biblioteca <math.h>
+
+Leitura (armazenar em vetores, um por característica):
+
+// Lê as N linhas de dados e armazena os valores lidos em seus respectivos vetores.
+void ler_dataset(float caule[], float folha[], float raiz[], float broto[], int rotulos[], int n);
+Treino e previsão (o classificador):
+
+// Calcula a média das 4 características para cada espécie e salva nos vetores de centróide.
+// Os índices dos vetores de centróide correspondem às espécies (0=Lunária, 1=Ígnea, 2=Bruma).
+void calcular_centroides(float caule[], float folha[], float raiz[], float broto[], int rotulos[], int n,
+                         float centroide_caule[], float centroide_folha[], float centroide_raiz[], float centroide_broto[]);
+
+// Calcula e retorna a distância ao quadrado entre uma planta (suas 4 medidas) e um centróide específico.
+float distancia_quadrados(float caule, float folha, float raiz, float broto,
+                         float centroide_caule, float centroide_folha, float centroide_raiz, float centroide_broto);
+
+// Encontra o centróide mais próximo de uma planta e retorna o número da espécie correspondente (0, 1 ou 2).
+int classificar(float caule, float folha, float raiz, float broto,
+                 float centroide_caule[], float centroide_folha[], float centroide_raiz[], float centroide_broto[]);
+
+// Classifica todas as plantas de um conjunto, salvando o resultado de cada uma no vetor 'previstos'.
+void classificar_conjunto(float caule[], float folha[], float raiz[], float broto[], int n,
+                          float centroide_caule[], float centroide_folha[], float centroide_raiz[], float centroide_broto[],
+                          int previstos[]);
+Saída:
+
+// Imprime o nome da espécie por extenso (ex: "Lunaria") de acordo com o número da classe, SEM quebrar a linha (\n).
+void imprimir_especie(int classe);
+
+// Percorre o vetor de previsões e imprime a formatação "Amostra i: <nome da espécie>\n".
+void imprimir_previsoes(int previstos[], int n);
+
+// Compara o vetor de previstos com os reais, calcula e retorna a porcentagem de acertos (0.0 a 100.0).
+float calcular_acuracia(int previstos[], int reais[], int n);
+Restrições
+Treino e teste nunca ultrapassam 100 plantas cada.
+Garante-se que haverá pelo menos uma planta de cada espécie no conjunto de treino
