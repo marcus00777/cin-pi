@@ -1,30 +1,28 @@
 #include <stdio.h>
 
+void recebeVet(int vetor[], int tam);
+
 int main(){
 
-    int n;
+    int qtdElementos;
+    scanf("%d", &qtdElementos);
 
-    //tam vetor
-    scanf("%d", &n);
+    int vet[qtdElementos];
+    recebeVet(vet, qtdElementos);
 
-    int vetor[n];
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < qtdElementos; i++)
     {
-        scanf("%d", &vetor[i]);
+        printf("%d ", vet[i]);
     }
     
+    
+}
+//função para receber o vetor
+void recebeVet(int vetor[], int tam){
 
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i < tam; i++)
     {
-        
-        
-        
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", vetor[i]);
+        scanf("%d", &vetor[i]);
     }
     
 }
