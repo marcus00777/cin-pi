@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void recebeVet(int vetor[], int tam);
-void inverteVet(int vetor[], int tam);
+void inverteVet(int vetor[], int ini, int fim);
 void imprimirVet(int vet[], int tam);
 
 int main(){
@@ -12,7 +12,27 @@ int main(){
     int vet[qtdElementos];
     recebeVet(vet, qtdElementos);
     
-    inverteVet(vet, qtdElementos);
+    int inicioV = 0;
+
+    for (int i = 0; i < qtdElementos; i++)
+    {
+        //encontra a posição do zero para inverter até aquela parte do vetor, ou todo se não tiver 0
+        if(vet[i] == 0 || i == qtdElementos - 1){
+
+            int fimV;
+            if(vet[i] == 0){
+
+                fimV = i-1;   //recebe o índice antes do zero que será invertido
+
+            }else{
+                fimV = i; 
+            }
+
+            inverteVet(vet, inicioV, fimV);
+            inicioV = i + 1; //vai para o próximo bloco
+        }
+    }
+    
 
     imprimirVet(vet, qtdElementos);
     
@@ -28,50 +48,16 @@ void recebeVet(int vetor[], int tam){
     
 }
 
-void inverteVet(int vetor[], int tam){
+void inverteVet(int vetor[], int ini, int fim){
 
-    int i = 0;
-    int zero = 1; //posição do zero no vetor
-    int somaVet = 0; //para verificar se tem zero no vetor
-
-    while (i < tam && zero != 0)
+    for (int i = 0; i < (fim - ini + 1) / 2; i++)
     {
-        if(vetor[i] == 0){
-
-            zero = i;
-            i++;
-        }
-
-        i++;
-        somaVet++;
+        int aux = vetor[ini + i];
+        vetor[ini + i] = vetor[fim - i];
+        vetor[fim - i] = aux;
     }
     
-    for (int i = 0; i < zero / 2; i++)
-    {
-        int aux = vetor[i];
-        vetor[i] = vetor[zero - 1 - i];
-        vetor[zero - 1 - i] = aux ;
-    }
-
-    int primeiroElem = zero + 1; //posição do primeiro elemento depois do zero
-    int ultimoElemt = tam - 1;
-
-    for (int i = 0; i < (ultimoElemt  - primeiroElem + 1) / 2; i++)
-    {
-        int aux = vetor[primeiroElem + i];
-        vetor[primeiroElem + i] = vetor[ultimoElemt - i];
-        vetor[ultimoElemt - i] = aux ;
-    }
-
-    if(somaVet > 0){
-
-        for (int i = 0; i < zero / 2; i++)
-    {
-        int aux = vetor[i];
-        vetor[i] = vetor[zero - 1 - i];
-        vetor[zero - 1 - i] = aux ;
-    }
-    }
+    
 }
 
 void imprimirVet(int vet[], int tam){

@@ -1,0 +1,17 @@
+Em um determinado curso, os alunos estavam escrevendo redações com muitos erros, por isso foi proposto um sistema de correção e avaliação automático de texto.
+
+Sua tarefa é desenvolver um código em C que lê uma texto com até 1000 caracteres e verifica se as frases começam com letra maiúscula, se as palavras restantes estão em minúsculo, corrige o texto e dá uma pontuação, sendo 10 para textos com nenhum erro e 0 para textos com 20 ou mais erros. Há uma penalidade de 0.5 ponto para cada erro no texto.
+
+Imprima, também, quantas frases iniciaram com letra minúscula, o total de palavras no texto e quantos erros havia. Não serão considerados outros tipos de erros. Textos vazios levam nota 0.
+
+Exemplo de entrada
+Exemplo de saída
+
+Texto vazio! Nota: 0.0
+Hoje esta um dia bonito. Vamos passear no parque.
+Texto corrigido:
+Hoje esta um dia bonito. Vamos passear no parque.
+Frases que iniciavam com letra minúscula: 0
+Total de palavras: 9
+Total de erros: 0
+Nota: 10.0
