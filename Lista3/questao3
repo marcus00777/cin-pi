@@ -1,0 +1,30 @@
+No clássico jogo da cobrinha, o tabuleiro é formado por um espaço de tamanho NxN a qual não consegue sair, e a cobra ganha segmentos a cada frutinha coletada, assim aumentando de tamanho (inicial =1). Arthur sem tickets para responder começou a pensar em um programa que pudesse compor e acompanhar a movimentação otimizada (backtracking) da cobra para coletar todas as frutinhas.
+
+A cobra sempre parte do ponto central do tabuleiro (em um tabuleiro 3x3 parte da coordenada 1x1).
+
+Você deve criar um código em C que acompanha a movimentação da cobra e seu tamanho ao longo do tabuleiro até coletar todas as frutinhas.
+
+As estruturas de deslocamento e de coleta das frutinhas deve ser feito via funções, buscando o caminho otimizado(com o menor numero de movimentos entre uma fruta e a mais próxima).
+
+Entrada
+X : comprimento do tabuleiro, máximo de 7.
+
+Y: quantidade de frutas, máximo de 10.
+
+Uma sequência de coordenadas das frutas:
+
+(x1,y1)
+
+(x2,y2)
+
+...
+Saída
+Ao iniciar o código:
+
+  Inicializando análise do movimento.
+Sempre que coletar uma fruta:
+
+  Fruta coletada, tamanho atual: X e Y movimentos até o momento.
+Ao finalizar a execução:
+
+  Interessante o comportamento, foram X movimentos para coletar tudo. Eu não podia ser mais craque, agora é bom eu voltar para os tickets.

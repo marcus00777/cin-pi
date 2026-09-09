@@ -1,0 +1,44 @@
+Beatriz, carinhosamente apelidada de "Hidden Words", é uma programadora viciada em revistas de caça-palavras. Toda semana ela compra uma revista nova, resolve todas as palavras escondidas em poucos dias e fica sem paciência esperando a próxima edição chegar. Cansada de esperar, ela decidiu resolver o problema da única forma que uma programadora entediada resolveria: criando seu próprio caça-palavras em C.
+
+Beatriz já monta a matriz de letras à mão (isso ela gosta de fazer), mas quer um programa que, dada essa matriz e uma lista de palavras (nomes de frutas, animais, disciplinas, o que for), diga exatamente onde cada palavra está escondida — inclusive nas diagonais, que são suas favoritas.
+
+Ajude Beatriz a implementar esse programa em C.
+
+Regras da busca
+A palavra pode estar escrita em 8 direções possíveis: horizontal, vertical e diagonal, em ambos os sentidos.
+
+Para cada palavra, o programa deve:
+
+Percorrer a matriz linha por linha, coluna por coluna (de cima para baixo, da esquerda para a direita), testando cada célula como possível início da palavra.
+
+Para cada célula, testar as direções nesta ordem exata:
+
+horizontal-direita
+horizontal-esquerda
+vertical-baixo
+vertical-cima
+diagonal-baixo-direita
+diagonal-baixo-esquerda
+diagonal-cima-direita
+diagonal-cima-esquerda
+A primeira combinação (célula + direção) em que a palavra é encontrada por completo é a resposta. A busca para nesse momento.
+
+Dica: Uma forma prática de representar as 8 direções é utilizar dois vetores, dl e dc, indicando a variação de linha e coluna. Assim, cada direção pode ser representada por um par (dl, dc), bastando percorrer esses vetores na ordem especificada pelo enunciado.
+
+Entrada
+L C
+<L linhas de C caracteres, cada linha uma string sem espaços>
+N
+<N palavras a procurar>
+Onde L é o número de linhas e C é o número de colunas da matriz. N é o número de palavras a buscar.
+
+Saída
+Para cada palavra, uma linha, exatamente em um dos dois formatos abaixo (atenção a espaços, vírgula e dois-pontos):
+
+Se encontrada:
+
+PALAVRA encontrada em (lin, col), direcao: dir
+Se não encontrada:
+
+PALAVRA nao encontrada
+Os índices de linha e coluna são 0-based, isto é, começam em 0 e correspondem à posição da primeira letra da palavra.
