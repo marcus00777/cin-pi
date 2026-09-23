@@ -25,14 +25,7 @@ int *insere(int *vetor, int *quantidade, int *capacidade, int valor){
 
 void imprime_invertido(int *vetor, int quantidade){
 
-    for (int i = 0; i < quantidade/2; i++)
-    {
-        int aux = *(vetor + i);
-        *(vetor + i) = *(vetor + quantidade - 1 - i);
-        *(vetor + quantidade - 1 - i) = aux;
-    }
-
-    for (int i = 0; i < quantidade; i++)
+    for (int i = quantidade - 1; i >= 0; i--)
     {
         printf("%d ", *(vetor + i));
     }
