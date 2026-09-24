@@ -1,102 +1,79 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#define tam 100
+#include <string.h>
 
 int main(){
 
-    int linhas = 1; int quantidadePalavra = 0;
+    int tentativas = 0;  //contagem das tentativas
+    int tamtabuleiro; //definir o tamanho do tabuleiro
+    int qtdNavios; //quantiddes de navios
 
-    char **inventario = (char **) malloc(linhas * sizeof(char *));
+    int colunaNavio;
+    int linhaNavio;
 
-    if(inventario == NULL){
+    int estrategia;
+
+    scanf("%d", &tamtabuleiro);
+    scanf("%d", &qtdNavios);
+    scanf("%d %d", &colunaNavio, &linhaNavio);
+    scanf("%d", &estrategia);
+
+    char **matriz = (char **) calloc(tamtabuleiro, sizeof(char *));
+
+    if(matriz == NULL){
         return 1;
     }
 
-    char temporario[tam];
-    int pos = 0;
-
-    char palavra;
-    while (scanf("%c", &palavra) != EOF)
+    for (int i = 0; i < tamtabuleiro; i++)
     {
-        if(palavra != '\n' && palavra != '\t'){
-            temporario[pos] = palavra;
-            pos++;
+        matriz[i] = (char *) calloc(tamtabuleiro, sizeof(char));
 
-        }else if(pos > 0){
-            temporario[pos] = '\0';
+        if(matriz[i] == NULL){
 
-             //verificação do espaço reservado para as palavras
-            if(quantidadePalavra == linhas){
-
-                linhas *= 2;
-
-                char **temp = (char **) realloc(inventario, linhas * sizeof(char *));
-
-                if(temp == NULL){
-
-                    for (int i = 0; i < quantidadePalavra; i++)
-                    {
-                        free(inventario[i]);
-                    }
-                    free(inventario);
-                    return 1;
-                    
-                }
-                inventario = temp;
+            for (int j = 0; j < i; j++)
+            {
+                free(matriz[j]);
             }
 
-            inventario[quantidadePalavra] = (char *) malloc((pos + 1) * sizeof(char));
-
-            if(inventario[quantidadePalavra] == NULL){
-                return 1;
-            }
-
-            strcpy(inventario[quantidadePalavra], temporario);
-            printf("Sucesso! Mais um item pra colecao: %s\n", inventario[quantidadePalavra]);
-
-            quantidadePalavra++;
-            pos = 0;
-        }
-
-    }
-
-    //para a última palavra
-    if (pos > 0) {
-        temporario[pos] = '\0';
-
-        if(quantidadePalavra == linhas){
-            linhas++;
-            char **temp = (char **) realloc(inventario, linhas * sizeof(char *));
-            if(temp != NULL){
-
-                inventario = temp;}
-        }
-
-        inventario[quantidadePalavra] = (char *) malloc((pos + 1) * sizeof(char));
-
-        if(inventario[quantidadePalavra] != NULL){
-            strcpy(inventario[quantidadePalavra], temporario);
-            printf("Sucesso! Mais um item pra colecao: %s\n", inventario[quantidadePalavra]);
-
-            quantidadePalavra++;
+            free(matriz);
+            return 1;
         }
     }
     
-    for (int i = 0; i < quantidadePalavra; i++)
+    for (int k = 0; k < tamtabuleiro; k++)
     {
-        printf("%d. %s\n", i+1, inventario[i]);
+        for (int i = 0; i < tamtabuleiro; i++)
+        {
+            matriz[k][i] = '~';
+        }
+        
     }
-
-    printf("O que vou fazer com tudo isso?\n");
     
-    for (int i = 0; i < quantidadePalavra; i++)
+    for (int i = 0; i < qtdNavios; i++)
     {
-        free(inventario[i]);
+        for (int j = 0; j < qtdNavios; j++)
+        {
+            matriz[linhaNavio][colunaNavio] = 'N';
+        }
+        
     }
-    free(inventario);
-    inventario = NULL;
-
-    return 0;
     
+
+    //exibição da matriz
+    for (int j = 0; j < tamtabuleiro; j++)
+    {
+        for (int i = 0; i < tamtabuleiro; i++)
+        {
+            printf("%c", matriz[j][i]);
+        }
+        printf("\n");
+    }
+    
+
+    //Liberando memoria
+    for (int i = 0; i < tamtabuleiro; i++)
+    {
+        free(matriz[i]);
+    }
+    free(matriz);
 }
