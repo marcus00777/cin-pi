@@ -5,24 +5,24 @@ void operacao(int *valor1, int *valor2, char *comando, int *Resultados, int *pos
 
     if(*comando == '+'){
         *(Resultados + *pos) = *valor1 + *valor2;
-        printf("Resultado Operação %d %c %d: %d\n", *valor1, *comando, *valor2, *(Resultados + *pos));
+        printf("Operação %d: %d %c %d = %d\n", *pos + 1, *valor1, *comando, *valor2, *(Resultados + *pos));
         (*pos)++;
 
     }else if(*comando == '-'){
         *(Resultados + *pos) = *valor1 - *valor2;
-        printf("Resultado Operação %d %c %d: %d\n", *valor1, *comando, *valor2, *(Resultados + *pos));
+        printf("Operação %d: %d %c %d = %d\n", *pos + 1, *valor1, *comando, *valor2, *(Resultados + *pos));
         (*pos)++;
 
     }else if(*comando == '*'){
         *(Resultados + *pos) = *valor1 * *valor2;
-        printf("Resultado Operação %d %c %d: %d\n", *valor1, *comando, *valor2, *(Resultados + *pos));
+        printf("Operação %d: %d %c %d = %d\n", *pos + 1, *valor1, *comando, *valor2, *(Resultados + *pos));
         (*pos)++;
 
     }else if(*comando == '/'){
 
         if(*valor2 != 0){
             *(Resultados + *pos) = *valor1 / *valor2;
-            printf("Resultado Operação %d %c %d: %d\n", *valor1, *comando, *valor2, *(Resultados + *pos));
+            printf("Operação %d: %d %c %d = %d\n", *pos + 1, *valor1, *comando, *valor2, *(Resultados + *pos));
             (*pos)++;
         }else{
             printf("Operação Inválida! Próxima!\n");
